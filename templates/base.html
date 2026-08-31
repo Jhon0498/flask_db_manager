@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+
+{# Set the default title for the application #}
+{% block title %}Flasky{% endblock %}
+
+
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+
+{# Navigation bar layout configuration #}
+{% block navbar %}
+{# Use navbar-inverse to achieve the dark header bar styling #}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            {# Mobile navigation toggle button #}
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            {# Main brand link pointing to the home route #}
+            <a class="navbar-brand" href="{{ url_for('index') }}">Flasky</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                {# Navigation links #}
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{# Main content area with flash message support #}
+{% block content %}
+<div class="container">
+    {# Display temporary alert messages passed from Flask routes #}
+    {% for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    {# Placeholder block for page-specific content #}
+    {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
