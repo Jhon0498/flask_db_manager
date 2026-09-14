@@ -2,7 +2,11 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block title %}
-Olá, Stranger!
+    {% if name %}
+        Olá, {{ name }}!
+    {% else %}
+        Olá, Stranger!
+    {% endif %}
 {% endblock %}
 
 {% block page_content %}
@@ -11,8 +15,16 @@ Olá, Stranger!
 <div class="page-header">
 
     <h1>
-        Olá, Stranger!
+        {% if name %}
+            Olá, {{ name }}!
+        {% else %}
+            Olá, Stranger!
+        {% endif %}
     </h1>
+
+    {% if name %}
+        <p>Prazer em conhecê-lo!</p>
+    {% endif %}
 
 </div>
 
@@ -39,12 +51,10 @@ Olá, Stranger!
             Relação de usuários cadastrados
         </h2>
 
-
         <!-- Contador de usuários -->
         <p>
             Quantidade: {{ user_count }}
         </p>
-
 
         <table class="table">
 
@@ -64,7 +74,6 @@ Olá, Stranger!
 
             </thead>
 
-
             <tbody>
 
                 {% for user in users %}
@@ -76,7 +85,6 @@ Olá, Stranger!
                     <td>
                         {{ user.username }}
                     </td>
-
 
                     <!-- Função -->
 
@@ -109,7 +117,7 @@ Olá, Stranger!
 
 <br>
 
-<!-- Relação de função -->
+<!-- Relação de funções -->
 
 <div class="row">
 
@@ -123,7 +131,6 @@ Olá, Stranger!
         <p>
             Quantidade: {{ role_count }}
         </p>
-
 
         <table class="table">
 
@@ -143,11 +150,9 @@ Olá, Stranger!
 
             </thead>
 
-
             <tbody>
 
-
-                <!-- intera com as funções -->
+                <!-- Interage com as funções -->
 
                 {% for role in roles %}
 
@@ -156,9 +161,7 @@ Olá, Stranger!
                     <!-- Nome da função -->
 
                     <td>
-
                         {{ role.name }}
-
                     </td>
 
                     <!-- Usuários daquela função -->
@@ -172,9 +175,7 @@ Olá, Stranger!
                                 {% for user in role.users.all() %}
 
                                 <li>
-
                                     {{ user.username }}
-
                                 </li>
 
                                 {% endfor %}
@@ -189,11 +190,9 @@ Olá, Stranger!
 
                     </td>
 
-
                 </tr>
 
                 {% endfor %}
-
 
             </tbody>
 
@@ -202,6 +201,14 @@ Olá, Stranger!
     </div>
 
 </div>
-
-
 {% endblock %}
+
+{% if name %}
+    Olá, {{ name }}!
+{% else %}
+    Olá, Stranger!
+{% endif %}
+
+{% if name %}
+    <p>Prazer em conhecê-lo!</p>
+{% endif %}
