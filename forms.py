@@ -17,7 +17,7 @@ class UserForm(FlaskForm):
 
     # Campo para digitar o nome do usuário
     username = StringField(
-        'Username',
+        'What is your name?',
         validators=[DataRequired()]
     )
 
@@ -31,7 +31,7 @@ class UserForm(FlaskForm):
     # Moderator     -> 2
     # User          -> 3
     role = SelectField(
-        'Role',
+        'Role?:',
         coerce=int,
         validators=[DataRequired()]
     )

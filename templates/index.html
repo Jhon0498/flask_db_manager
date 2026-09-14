@@ -1,13 +1,7 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}
-    {% if name %}
-        Olá, {{ name }}!
-    {% else %}
-        Olá, Stranger!
-    {% endif %}
-{% endblock %}
+{% block title %}Flasky{% endblock %}
 
 {% block page_content %}
 
@@ -201,6 +195,7 @@
     </div>
 
 </div>
+
 {% endblock %}
 
 {% if name %}
